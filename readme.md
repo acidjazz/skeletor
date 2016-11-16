@@ -1,11 +1,11 @@
 [![](public/images/objectus128.png)](http://github.com/acidjazz/objectus)
-![](public/images/plus64.png)
+![](public/images/plus32.png)
 [![](public/images/coffee128.png)](http://coffeescript.org/)
-![](public/images/plus64.png)
+![](public/images/plus32.png)
 [![](public/images/pug128.png)](https://pugjs.org/)
-![](public/images/plus64.png)
+![](public/images/plus32.png)
 [![](public/images/stylus128.png)](http://stylus-lang.com/)
-![](public/images/plus64.png)
+![](public/images/plus32.png)
 [![](public/images/gulp128.png)](http://gulpjs.com//)
 
 
