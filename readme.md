@@ -1,7 +1,7 @@
-[![](media/objectus128.png)](http://github.com/acidjazz/objectus)
-[![](media/coffee128.png)](http://coffeescript.org/)
-[![](media/pug128.png)](https://pugjs.org/)
-[![](media/stylus128.png)](http://stylus-lang.com/)
+[![](public/images/objectus128.png)](http://github.com/acidjazz/objectus)
+[![](public/images/coffee128.png)](http://coffeescript.org/)
+[![](public/images/pug128.png)](https://pugjs.org/)
+[![](public/images/stylus128.png)](http://stylus-lang.com/)
 
 
 
