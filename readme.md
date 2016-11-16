@@ -1,3 +1,10 @@
+[![](media/objectus128.png)](http://github.com/acidjazz/objectus)
+[![](media/coffee128.png)](http://coffeescript.org/)
+[![](media/pug128.png)](https://pugjs.org/)
+[![](media/stylus128.png)](http://stylus-lang.com/)
+
+
+
 # [SPA](https://en.wikipedia.org/wiki/Single-page_application) skeletal setup
 > *Note*: currently in early development
 
