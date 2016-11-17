@@ -3,7 +3,9 @@
   "description": "SPA skeleton",
   "main": "index.html",
   "scripts": {
-    "dev": "./node_modules/gulp/bin/gulp.js sync",
+    "dev": "./node_modules/gulp/bin/gulp.js",
+    "sync": "./node_modules/gulp/bin/gulp.js sync",
+    "vendor": "./node_modules/gulp/bin/gulp.js sync",
     "prod": "./node_modules/gulp/bin/gulp.js prod"
   },
   "repository": {

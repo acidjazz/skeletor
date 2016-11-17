@@ -8,30 +8,23 @@
 ![](public/images/plus48.png)
 [![](public/images/gulp128.png)](http://gulpjs.com//)
 
-
-
 # [SPA](https://en.wikipedia.org/wiki/Single-page_application) skeletal setup
 > *Note*: currently in early development
-
 
 ## Usage
 
 *  compile all javascript, css, and html
 ```bash
-gulp
+npm run dev
 ```
 
-*  compile all vendor included libraries specified in `gulpfile.coffee` to `public/javascript/vendor.js` and `public/css/vendor.css`
+* compile all 3 but minified, uglified, with no sourcemaps
 ```bash
-gulp vendor
-```
-
-* compile all 3 but minified, uglified, and non-sourcemaped
-```bash
-gulp prod
+npm run prod
 ```
 
 * run browser-sync and host `public/` and all its related directories 
 ```bash
-gulp sync
+npm run sync
 ```
+
