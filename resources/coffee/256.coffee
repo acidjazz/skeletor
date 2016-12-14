@@ -25,7 +25,7 @@ _ =
     if p.offing and p.offtime > 0
 
       @turn el, false, 'offing'
-      setTimeout ->
+      setTimeout =>
         @turn el, 'offing', false
         @turn el, 'on', 'off'
       , p.offtime*1000 + 100
@@ -65,6 +65,10 @@ _ =
   rand: (min, max) ->
     return Math.floor(Math.random() * max) + min
 
+  fit: (srcWidth, srcHeight, maxWidth, maxHeight) ->
+    ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight)
+    width: srcWidth*ratio, height: srcHeight*ratio
+
   hex2rgb: (hex) ->
     result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
     r: parseInt(result[1], 16),
@@ -85,6 +89,84 @@ _ =
     , false
 
     document.body.appendChild(el)
+
+  jinit: ->
+    $.ajaxSetup
+      dataType: "json"
+
+  patch: (url, data) ->
+
+    @jinit()
+
+    jpatch = $.ajax
+      url: url
+      data: data
+      type: 'PATCH'
+
+    jpatch.fail (response) ->
+      @fail(response)
+
+    return jpatch
+
+  get: (args...) ->
+
+    @jinit()
+
+    jget = $.get args...
+
+    jget.fail (response) =>
+      @fail(response)
+      jget.fail(response)
+
+    return jget
+
+  post: (args...) ->
+
+    jpost = $.post args...
+
+    jpost.fail (response) =>
+      @fail(response)
+      jpost.fail(response)
+
+    return jpost
+
+  fail: (response) ->
+
+    error = response.responseJSON?.errors?[0]
+    if error is undefined
+      return Prompt.i response.status, response.statusText
+
+    pug = error.message.match /Pug Error: (.*?):([0-9]+)/
+    if pug isnt null
+      error.message = error.message.replace /Pug Error: (.*?):([0-9]+)/, ''
+      error.file = pug[1]
+      error.line = pug[2]
+
+    file = @encode "#{error.file}"
+
+    switch config.app.editor
+      when 'macvim' then editor = 'mvim://open?url=file://'
+      when 'sublime' then editor = 'subl://open?url=file://'
+      when 'emacs' then editor = 'emacs://open?url=file://'
+      when 'textmate' then editor = 'textmate://open/?url=file://'
+      when 'phpstorm' then editor = 'phpstorm://open?file='
+
+    if error.file isnt null
+      body = """
+        <pre>#{error.message}</pre>
+        <a href="#{editor}#{file}&line=#{error.line}"><b>#{error.file}:#{error.line}</b></a>
+      """
+    else
+      body = error.message
+
+    Prompt.i error.type, body, ['OK']
+
+  methods: (obj) ->
+    res = []
+    for i,m of obj
+      if typeof m is 'function'
+        res.push m
+    return res
 
   llc: ->
     ascii = """
